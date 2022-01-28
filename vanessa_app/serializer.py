@@ -1,10 +1,23 @@
 from rest_framework import serializers
 from vanessa_app.models import Servico, Cliente, Atendimento
+from vanessa_app.validators import *
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = ['nome','rg','cpf','data_nascimento']
+        
+    def validate(self, data): # Na def criado no arquivo validators teremos um retono True or False 
+        if not cpf_valido(data['cpf']):
+            raise serializers.ValidationError({'cpf':'CPF Inválido'})
+
+        if not nome_valido(data['nome']): # Na def criado no arquivo validators teremos um retono True or False 
+            raise serializers.ValidationError({'nome':'Nome Inválido'})
+        return data
+
+
+
+
 
 class ClienteSerializerV2(serializers.ModelSerializer):
     class Meta:

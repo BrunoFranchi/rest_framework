@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vanessa_app',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,15 +128,15 @@ REST_FRAMEWORK = {
         #     'rest_framework.permissions.IsAuthenticated', 
         #     'rest_framework.permissions.DjangoModelPermissions'
         #     ],
-    'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+    # 'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
        
     # 'DEFAULT_THROTTLE_CLASSES': [
     #     'rest_framework.throttling.AnonRateThrottle', #limitando requisições apenas de usuário anonimo
     #     # 'rest_framework.throttling.UserRateThrottle'
     # ],
     # 'DEFAULT_THROTTLE_RATES': {
-    #     'anon': '5/day', #definindo 5 requisições para usuário anonimo por dia
-    #     # 'user': '1000/day'
+    #     'anon': '100/day', #definindo 100 requisições para usuário anonimo por dia
+    #     'user': '1000/day',
     # }
 }
 
@@ -144,3 +146,10 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CORS_ALLOWED_ORIGINS = [
+
+    "http://localhost:3000",
+    
+]

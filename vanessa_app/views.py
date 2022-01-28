@@ -1,5 +1,5 @@
-from django.http import JsonResponse
-from rest_framework import viewsets, generics
+
+from rest_framework import viewsets, generics, status
 from vanessa_app.models import Cliente, Servico, Atendimento
 from vanessa_app.serializer import ClienteSerializer, ServicoSerializer, AtendimentoSerializer,ListaServicosPorCliente, ClienteSerializerV2
 from rest_framework.response import Response
