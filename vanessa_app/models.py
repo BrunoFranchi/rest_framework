@@ -3,7 +3,7 @@ from django.db import models
 class Cliente(models.Model):
     
     nome = models.CharField(max_length=30)
-    celular = models.CharField(max_length=11, default="")
+    celular = models.CharField(max_length=13, default="")
     rg = models.CharField(max_length=9)
     cpf = models.CharField(max_length=11, unique=True)
     data_nascimento = models.DateField()
